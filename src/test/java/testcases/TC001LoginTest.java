@@ -56,6 +56,8 @@ public class TC001LoginTest {
     public void testLoginWithInvalidEmail() {
         logger.info("Starting test: testLoginWithInvalidEmail");
         try {
+            Thread.sleep(2000);
+            driver.get("https://ernx-consumer.vercel.app/login");
             LoginPage loginPage = new LoginPage(driver);
             loginPage.setEmail("test");
             loginPage.clickNext();
@@ -104,11 +106,14 @@ public class TC001LoginTest {
     }
 
     @Test
-    public void testLoginWithValidOTP() {
+    public void testLoginWithValidOTP() throws InterruptedException {
         logger.info("Starting test: testLoginWithValidOTP");
+
         try {
+            Thread.sleep(2000);
+            driver.get("https://ernx-consumer.vercel.app/login");
             LoginPage loginPage = new LoginPage(driver);
-            loginPage.setEmail("test@gmail.com");
+            loginPage.setEmail("sravanthi.nsr@gmail.com");
             loginPage.clickNext();
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80)); // Adjust based on actual OTP wait time
             wait.until(ExpectedConditions.elementToBeClickable(loginPage.btnSignIn));

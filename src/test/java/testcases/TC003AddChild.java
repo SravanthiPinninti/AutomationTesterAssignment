@@ -6,9 +6,10 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pageobjects.AddChild;
+import pageobjects.AddChildPage;
 import utilities.ERNXUtility;
 
 import java.time.Duration;
@@ -26,18 +27,24 @@ public class TC003AddChild {
         logger.info("Setting up WebDriver for AddChild tests");
         driver = ERNXUtility.getWebDriver();
     }
-
+    @AfterClass
+    public void tearDown() {
+        logger.info("Closing WebDriver");
+        driver.quit();
+    }
     @Test
-    public void emptyFormSubmission() {
-        logger.info("Starting test: emptyFormSubmission");
+    public void formSubmission() {
+        logger.info("Starting test: formSubmission");
         try {
             ERNXUtility.loginWithValidOTP(driver);
+            Thread.sleep(3000);
             ERNXUtility.validCompleteProfileSubmission(driver);
 
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            wait.until(ExpectedConditions.urlContains("addchild/basics"));
+            AddChildPage addChild = new AddChildPage(driver);
+            addChild.addYourSelfOrChild();
 
-            AddChild addChild = new AddChild(driver);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+            wait.until(ExpectedConditions.urlContains("addchild/basics"));
 
             // Verify male gender is not selected
             boolean genderMaleIsSelected = addChild.maleGenderElement.isSelected();

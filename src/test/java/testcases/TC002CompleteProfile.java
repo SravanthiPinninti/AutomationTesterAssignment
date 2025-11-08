@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pageobjects.CompleteProfile;
+import pageobjects.CompleteProfilePage;
 import utilities.ERNXUtility;
 
 import java.time.Duration;
@@ -41,9 +41,8 @@ public class TC002CompleteProfile {
         logger.info("Starting test: emptyFormSubmission");
         try {
             ERNXUtility.loginWithValidOTP(driver);
-            CompleteProfile completeProfile = new CompleteProfile(driver);
-
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            CompleteProfilePage completeProfile = new CompleteProfilePage(driver);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
             wait.until(ExpectedConditions.urlContains("complete-profile"));
 
             completeProfile.clickNext();
@@ -61,10 +60,14 @@ public class TC002CompleteProfile {
     public void validFormSubmission() {
         logger.info("Starting test: validFormSubmission");
         try {
-            ERNXUtility.loginWithValidOTP(driver);
-            CompleteProfile completeProfile = new CompleteProfile(driver);
+            if(!driver.getCurrentUrl().contains("complete-profile")){
+                ERNXUtility.loginWithValidOTP(driver);
+            }
 
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            CompleteProfilePage completeProfile = new CompleteProfilePage(driver);
+
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
             wait.until(ExpectedConditions.urlContains("complete-profile"));
 
             completeProfile.setFirstName("Hari");

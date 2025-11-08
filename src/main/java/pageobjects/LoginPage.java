@@ -38,6 +38,7 @@ public class LoginPage extends BasePage {
 
     // Method to set email address
     public void setEmail(String email) {
+        txtEmail.clear();
         txtEmail.sendKeys(email);
     }
 

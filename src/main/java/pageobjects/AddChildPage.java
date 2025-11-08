@@ -4,12 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class AddChild extends BasePage {
+public class AddChildPage extends BasePage {
 
     /**
      * Constructor for AddChild.
      */
-    public AddChild(WebDriver driver) {
+    public AddChildPage(WebDriver driver) {
         super(driver);
     }
 

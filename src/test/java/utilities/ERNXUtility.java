@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pageobjects.CompleteProfile;
+import pageobjects.CompleteProfilePage;
 import pageobjects.LoginPage;
 
 import java.time.Duration;
@@ -40,11 +40,11 @@ public class ERNXUtility {
         logger.info("Performing login with valid OTP");
         try {
             LoginPage loginPage = new LoginPage(driver);
-            loginPage.setEmail("alliswell551@gmail.com");
+            loginPage.setEmail("sravanthi.nsr@gmail.com");
             loginPage.clickNext();
 
             // Wait for OTP input elements to be visible
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
             wait.until(ExpectedConditions.visibilityOf(loginPage.btnSignIn));
 
             // Assume OTP is manually entered or handled externally
@@ -62,10 +62,10 @@ public class ERNXUtility {
     public static void validCompleteProfileSubmission(WebDriver driver) throws InterruptedException {
         logger.info("Submitting valid complete profile");
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
             wait.until(ExpectedConditions.urlContains("complete-profile"));
 
-            CompleteProfile completeProfile = new CompleteProfile(driver);
+            CompleteProfilePage completeProfile = new CompleteProfilePage(driver);
             completeProfile.setFirstName("Hari");
             completeProfile.setLastName("P");
             completeProfile.clickNext();
