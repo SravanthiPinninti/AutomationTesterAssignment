@@ -1,3 +1,6 @@
+Repository
+git clone https://github.com/SravanthiPinninti/AutomationTesterAssignment.git
+
 # AutomationTesterAssignment
 Automation Tester Intern assignment: Selenium Java scripts
 
@@ -26,7 +29,7 @@ Automation Tester Intern assignment: Selenium Java scripts
 Open the following test case files located in project directory:
 - src/test/java/testcases/TC001LoginTest.java
 - src/test/java/testcases/TC002CompleteProfile.java
-- src/test/java/testcases/TC003AddChild.java
+- src/test/java/testcases/TC003AddChild.java  
 Use IDE (such as IntelliJ IDEA or Eclipse) or a terminal to execute the test cases.
 
 # Expected Outcomes 
@@ -36,3 +39,7 @@ Use IDE (such as IntelliJ IDEA or Eclipse) or a terminal to execute the test cas
 
 # Logging File Location
 logs/application.log
+
+# Additional Notes
+OTP auto-reading from email is not implemented yet.  
+Manual OTP entry is supported using a wait (Thread.sleep() or WebDriverWait  
