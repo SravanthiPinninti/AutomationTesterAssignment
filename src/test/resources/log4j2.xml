@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <!-- File Appender to log messages to a file -->
+        <File name="FileAppender" fileName="logs/application.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1} - %m%n"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <!-- Root logger configuration -->
+        <Root level="debug">
+            <AppenderRef ref="FileAppender"/>
+        </Root>
+    </Loggers>
+</Configuration>
